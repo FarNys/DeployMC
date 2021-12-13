@@ -14,7 +14,7 @@ import ErrorPage from "./pages/ErrorPage";
 import PrivateRoute from "./routing/PrivateRoute";
 import DynamicPage from "./pages/DynamicPage";
 import Footer from "./components/Footer";
-export const baseURL = "http://localhost:5000";
+export const baseURL = "https://deploymc.herokuapp.com";
 function App() {
   const dispatch = useDispatch();
   const loginState = useSelector(selectLogin);
