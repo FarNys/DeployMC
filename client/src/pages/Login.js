@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import Fade from "react-reveal/Fade";
 import Loader from "react-js-loader";
-
+import { baseURL } from "../App";
 const Login = () => {
   //DECLARE USER EMAIL AND PW TO SEND TO SERVER
   const [user, setuser] = useState({ email: "", password: "" });
@@ -34,7 +34,7 @@ const Login = () => {
     e.preventDefault();
     setloading(true);
     try {
-      const res = await fetch("http://localhost:5000/login/", {
+      const res = await fetch(`${baseURL}/login`, {
         method: "POST",
         headers: {
           "x-auth-token": localStorage.getItem("token"),

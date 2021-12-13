@@ -4,51 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import SingleCard from "../components/SingleCard";
 import "../styles/SingleCard.css";
 import Loader from "react-js-loader";
-
+import { baseURL } from "../App";
 const Wishlist = () => {
   const dispatch = useDispatch();
   const [loading, setloading] = useState(false);
   const wishCards = useSelector(selectWishCard);
 
-  // const deleteHandler = async (item) => {
-  //   // setdeleteEffect(false);
-  //   const res = await fetch(`http://localhost:5000/allcards/${item._id}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "x-auth-token": localStorage.getItem("token"),
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   const data = await res.json();
-  //   dispatch(
-  //     deleteItem({
-  //       deleteId: data._id,
-  //     })
-  //   );
-  //   console.log(data, item);
-  // };
-  //CHANGE WISH STATE
-  // const wishHandler = async (item) => {
-  //   const res = await fetch(`http://localhost:5000/allcards/${item._id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "x-auth-token": localStorage.getItem("token"),
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ isWishList: item.isWishList }),
-  //   });
-  //   const data = await res.json();
-  //   dispatch(
-  //     changeWishPage({
-  //       elementId: item._id,
-  //     })
-  //   );
-  // };
-
   useEffect(() => {
     setloading(true);
     const fetchData = async () => {
-      const result = await fetch("http://localhost:5000/allcards/", {
+      const result = await fetch(`${baseURL}/allcards`, {
         method: "GET",
         headers: {
           "x-auth-token": localStorage.getItem("token"),

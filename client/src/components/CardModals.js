@@ -5,7 +5,7 @@ import LoaderButton from "./LoaderButton";
 import { filterForEdit, setCard } from "../features/cardSlice";
 import { useDispatch } from "react-redux";
 import { Fade } from "react-reveal";
-
+import { baseURL } from "../App";
 const CardModals = ({ onClose, isOpen, item, setisOpen }) => {
   const [success, setsuccess] = useState(false);
   const dispatch = useDispatch();
@@ -26,24 +26,21 @@ const CardModals = ({ onClose, isOpen, item, setisOpen }) => {
     e.preventDefault();
     setloading(true);
     try {
-      const result = await fetch(
-        `http://localhost:5000/allcards/edit/${item._id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "x-auth-token": localStorage.getItem("token"),
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: cardData.title,
-            description: cardData.description,
-            image: cardData.image,
-            extra: cardData.extra,
-            extra2: cardData.extra2,
-            isWishList: item.isWishList,
-          }),
-        }
-      );
+      const result = await fetch(`${baseURL}/allcards/edit/${item._id}`, {
+        method: "PATCH",
+        headers: {
+          "x-auth-token": localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: cardData.title,
+          description: cardData.description,
+          image: cardData.image,
+          extra: cardData.extra,
+          extra2: cardData.extra2,
+          isWishList: item.isWishList,
+        }),
+      });
       const data = await result.json();
       dispatch(
         filterForEdit({

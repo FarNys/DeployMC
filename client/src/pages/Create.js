@@ -4,7 +4,7 @@ import Fade from "react-reveal/Fade";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import FileBase64 from "react-file-base64";
 import Loader from "react-js-loader";
-
+import { baseURL } from "../App";
 const Create = () => {
   const [loading, setloading] = useState(false);
   const [alert, setalert] = useState(false);
@@ -66,7 +66,7 @@ const Create = () => {
       //ADDED NEW PROPERTIES TO OUR CARDS
       setcardData(cardData.fields.push(addInput));
       try {
-        const result = await fetch("http://localhost:5000/allcards", {
+        const result = await fetch(`${baseURL}/allcards`, {
           method: "POST",
           headers: {
             "x-auth-token": localStorage.getItem("token"),

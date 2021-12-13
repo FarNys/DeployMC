@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import "../styles/Register.css";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../features/userSlice";
+import { baseURL } from "../App";
 const Register = () => {
   const history = useHistory();
   //USE STATE PARAMETER
@@ -26,7 +27,7 @@ const Register = () => {
     e.preventDefault();
     if (userInfo.name && userInfo.password) {
       try {
-        const result = await fetch("http://localhost:5000/register/", {
+        const result = await fetch(`${baseURL}/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -4,7 +4,7 @@ import { getAllReviews, selectReviews } from "../features/reviewsSlice";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/ReceiveReview.css";
-
+import { baseURL } from "../App";
 import Slider from "react-slick";
 
 const ReceiveReview = () => {
@@ -14,7 +14,7 @@ const ReceiveReview = () => {
   useEffect(() => {
     const getReviews = async () => {
       try {
-        const result = await fetch("http://localhost:5000/reviews");
+        const result = await fetch(`${baseURL}/reviews`);
         const data = await result.json();
         console.log(data);
         dispatch(

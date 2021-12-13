@@ -7,34 +7,16 @@ import "../styles/SingleCard.css";
 import Loader from "react-js-loader";
 import States from "../components/States";
 import Blobs from "../components/Blobs";
+import { baseURL } from "../App";
 const AllCards = () => {
   const [loading, setloading] = useState(false);
   const dispatch = useDispatch();
   const myCards = useSelector(selectCard);
-  //CHANGE WISH STATE
-  // const wishHandler = async (item) => {
-  //   const res = await fetch(`http://localhost:5000/allcards/${item._id}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "x-auth-token": localStorage.getItem("token"),
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ isWishList: item.isWishList }),
-  //   });
-  //   const data = await res.json();
-  // dispatch(
-  //   changeWishState({
-  //     elementId: item._id,
-  //   })
-  // );
-  //   console.log(item._id, myWishCards);
-  //   console.log(myCards);
-  // };
-  //USE EFFECT TO LOAD ALL DATA CARDS
+
   useEffect(() => {
     setloading(true);
     const fetchData = async () => {
-      const result = await fetch("http://localhost:5000/allcards/", {
+      const result = await fetch(`${baseURL}/allcards`, {
         method: "GET",
         headers: {
           "x-auth-token": localStorage.getItem("token"),

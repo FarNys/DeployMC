@@ -180,7 +180,6 @@ const Home = () => {
       <LoginComp />
       <ReceiveReview />
       <SendReview />
-      <Footer />
     </div>
   );
 };

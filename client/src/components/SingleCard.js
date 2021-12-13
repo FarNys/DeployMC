@@ -11,6 +11,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import CardModal from "./CardModal";
 import CardModals from "./CardModals";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { baseURL } from "../App";
 const SingleCard = ({ item }) => {
   const dispatch = useDispatch();
   const [isOpen, setisOpen] = useState(false);
@@ -24,7 +25,7 @@ const SingleCard = ({ item }) => {
   const [deleteEffect, setdeleteEffect] = useState(false);
   const deleteHandler = async (item) => {
     // setdeleteEffect(false);
-    const res = await fetch(`http://localhost:5000/allcards/${item._id}`, {
+    const res = await fetch(`${baseURL}/allcards/${item._id}`, {
       method: "DELETE",
       headers: {
         "x-auth-token": localStorage.getItem("token"),

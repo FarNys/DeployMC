@@ -13,14 +13,15 @@ import Login from "./pages/Login";
 import ErrorPage from "./pages/ErrorPage";
 import PrivateRoute from "./routing/PrivateRoute";
 import DynamicPage from "./pages/DynamicPage";
-
+import Footer from "./components/Footer";
+export const baseURL = "http://localhost:5000";
 function App() {
   const dispatch = useDispatch();
   const loginState = useSelector(selectLogin);
   console.log(loginState);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch("http://localhost:5000/login", {
+      const result = await fetch(`${baseURL}/login`, {
         method: "GET",
         headers: {
           "x-auth-token": localStorage.getItem("token"),
@@ -57,6 +58,7 @@ function App() {
           <Route path="/allcards/:id" component={DynamicPage} />
           <Route path="*" component={ErrorPage} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -4,6 +4,7 @@ import PriorityHighIcon from "@material-ui/icons/PriorityHigh";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import { addReview, selectReviews } from "../features/reviewsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { baseURL } from "../App";
 const SendReview = () => {
   const dispatch = useDispatch();
   const [loading, setloading] = useState(false);
@@ -43,7 +44,7 @@ const SendReview = () => {
         reviews.desc !== ""
       ) {
         setloading(true);
-        const res = await fetch("http://localhost:5000/reviews", {
+        const res = await fetch(`${baseURL}/reviews`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
